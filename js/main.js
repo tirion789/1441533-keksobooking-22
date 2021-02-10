@@ -66,17 +66,19 @@ const NumberGuests = {
   MAX: 10,
 };
 
-const XСoordinate = {
+const XCoordinate = {
   MIN: 35.65000,
   MAX: 35.70000,
 };
 
-const YСoordinate = {
+const YCoordinate = {
   MIN: 139.70000,
   MAX: 139.80000,
 };
 
-const СoordinateFloatPoint = 5;
+const NUMBER_FLOAT_CORDINATE = 5;
+
+const QUANTITY_ARRAY = 10;
 
 
 const getArbitraryInteger = (min, max) => {
@@ -108,8 +110,8 @@ const getArbitraryArrayLength = (array) => {
 };
 
 const getLocation = () => ({
-  x: getRandomNumber(XСoordinate.MIN, XСoordinate.MAX, СoordinateFloatPoint),
-  Y: getRandomNumber(YСoordinate.MIN, YСoordinate.MAX, СoordinateFloatPoint),
+   CoordinateX: X = getRandomNumber(XCoordinate.MIN, XCoordinate.MAX, NUMBER_FLOAT_CORDINATE),
+   CoordinateY: Y = getRandomNumber(YCoordinate.MIN, YCoordinate.MAX, NUMBER_FLOAT_CORDINATE),
 })
 
 const getAuthor = () => ({
@@ -118,7 +120,7 @@ const getAuthor = () => ({
 
 const getGenerateOffer = () => ({
   title: getArbitraryArrayElement(TITLE),
-  address: `${XСoordinate}, ${YСoordinate}`,
+  address: `${X}, ${Y}`,
   price: getArbitraryInteger(PriceRange.MIN, PriceRange.MAX),
   type: getArbitraryArrayElement(TYPE),
   rooms: getArbitraryInteger(RoomsNumber.MIN, RoomsNumber.MAX),
@@ -136,5 +138,6 @@ const getFinalObject = () => ({
   offer: getGenerateOffer(),
 });
 
-const createOffer = new Array(10).fill(null).map(getFinalObject);
+const createOffer = new Array(QUANTITY_ARRAY).fill(null).map(getFinalObject);
+
 createOffer;
