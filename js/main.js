@@ -80,7 +80,6 @@ const NUMBER_FLOAT_CORDINATE = 5;
 
 const QUANTITY_ARRAY = 10;
 
-
 const getArbitraryInteger = (min, max) => {
   if (min > max) {
     throw new Error('Неверно указан числовой диапазон');
@@ -97,7 +96,6 @@ const getRandomNumber = (min, max, numberFloatPoint) => {
   return randomPoint.toFixed(numberFloatPoint);
 }
 
-
 const getArbitraryArrayElement = (element) => element[Math.floor(Math.random() * element.length)];
 
 const getArbitraryArrayLength = (array) => {
@@ -109,9 +107,10 @@ const getArbitraryArrayLength = (array) => {
   return newArray;
 };
 
+
 const getLocation = () => ({
-   CoordinateX: X = getRandomNumber(XCoordinate.MIN, XCoordinate.MAX, NUMBER_FLOAT_CORDINATE),
-   CoordinateY: Y = getRandomNumber(YCoordinate.MIN, YCoordinate.MAX, NUMBER_FLOAT_CORDINATE),
+  x: getRandomNumber(XCoordinate.MIN, XCoordinate.MAX, NUMBER_FLOAT_CORDINATE),
+  y: getRandomNumber(YCoordinate.MIN, YCoordinate.MAX, NUMBER_FLOAT_CORDINATE),
 })
 
 const getAuthor = () => ({
@@ -120,7 +119,7 @@ const getAuthor = () => ({
 
 const getGenerateOffer = () => ({
   title: getArbitraryArrayElement(TITLE),
-  address: `${X}, ${Y}`,
+  address: Object.values(getLocation()),
   price: getArbitraryInteger(PriceRange.MIN, PriceRange.MAX),
   type: getArbitraryArrayElement(TYPE),
   rooms: getArbitraryInteger(RoomsNumber.MIN, RoomsNumber.MAX),
@@ -139,5 +138,4 @@ const getFinalObject = () => ({
 });
 
 const createOffer = new Array(QUANTITY_ARRAY).fill(null).map(getFinalObject);
-
 createOffer;
