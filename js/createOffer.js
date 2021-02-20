@@ -31,6 +31,8 @@ const getFinalObject = () => ({
   offer: getGenerateOffer(),
 });
 
-const createOffer = new Array(QUANTITY_ARRAY).fill(null).map(getFinalObject);
+const createOffer = () => new Array(QUANTITY_ARRAY).fill(null).map(getFinalObject);
 
 createOffer;
+
+export {createOffer};
