@@ -1,5 +1,5 @@
 import {getArbitraryInteger, getRandomNumber, getArbitraryArrayElement, getArbitraryArrayLength} from './util.js';
-import {QUANTITY_ARRAY, NUMBER_FLOAT_COORDINATE, YCoordinate , XCoordinate, NumberGuests, RoomsNumber, PriceRange, AvatarNumber, DESCRIPTION, PHOTOS, FEATURES, CHECKOUT, CHECKIN, TYPE, TITLE} from './data.js'
+import {CARDS_COUNT, NUMBER_FLOAT_COORDINATE, YCoordinate , XCoordinate, NumberGuests, RoomsNumber, PriceRange, AvatarNumber, DESCRIPTION, PHOTOS, FEATURES, CHECKOUT, CHECKIN, TYPE, TITLE} from './data.js'
 
 
 const getLocation = () => ({
@@ -31,7 +31,7 @@ const getFinalObject = () => ({
   offer: getGenerateOffer(),
 });
 
-const createOffer = () => new Array(QUANTITY_ARRAY).fill(null).map(getFinalObject);
+const createOffer = () => new Array(CARDS_COUNT).fill(null).map(getFinalObject);
 
 createOffer;
 

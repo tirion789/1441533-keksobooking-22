@@ -24,20 +24,17 @@ const generateCard = ({author, offer}) => {
   cardElement.querySelector('.popup__text--capacity').textContent = `${offer.rooms} комнаты для ${offer.guests} гостей`;
   cardElement.querySelector('.popup__text--time').textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
   cardElement.querySelector('.popup__description').textContent = offer.description;
-  cardElement.querySelector('.popup__avatar');
   cardElement.querySelector('img').src = author.avatar;
 
   const featuresList = cardElement.querySelector('.popup__features');
   featuresList.innerText = '';
-  const featuresItem = offer.features;
-  for (let feature of featuresItem) {
+  for (let feature of offer.features) {
     featuresList.insertAdjacentHTML('beforeend', `<li class="popup__feature popup__feature--${feature}"></li>`);
   }
 
   const photoList = cardElement.querySelector('.popup__photos');
   photoList.innerText = '';
-  const photoItem = offer.photos;
-  for (let photos of photoItem) {
+  for (let photos of offer.photos) {
     photoList.insertAdjacentHTML('beforeend', `<img src="${photos}" class="popup__photo" width="45" height="40" alt="Фотография жилья">`);
   }
 
@@ -47,12 +44,3 @@ const generateCard = ({author, offer}) => {
 const generateCards = similarCard.map(generateCard)
 createCardsFragment.appendChild(generateCards[0]);
 mapCanvas.appendChild(createCardsFragment);
-
-
-
-
-
-
-
-
-

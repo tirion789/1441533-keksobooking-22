@@ -78,7 +78,7 @@ const YCoordinate = {
 
 const NUMBER_FLOAT_COORDINATE = 5;
 
-const QUANTITY_ARRAY = 10;
+const CARDS_COUNT = 10;
 
-export {QUANTITY_ARRAY, NUMBER_FLOAT_COORDINATE, YCoordinate , XCoordinate, NumberGuests, RoomsNumber, PriceRange, AvatarNumber, DESCRIPTION, PHOTOS, FEATURES, CHECKOUT, CHECKIN, TYPE, TITLE};
+export {CARDS_COUNT, NUMBER_FLOAT_COORDINATE, YCoordinate , XCoordinate, NumberGuests, RoomsNumber, PriceRange, AvatarNumber, DESCRIPTION, PHOTOS, FEATURES, CHECKOUT, CHECKIN, TYPE, TITLE};
 
