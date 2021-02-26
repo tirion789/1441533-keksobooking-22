@@ -4,8 +4,8 @@ import {similarCard, generateCard} from './card.js';
 
 
 const Coordinates = {
-  width: 35.65841,
-  longitude: 139.78145,
+  width: 35.65061,
+  longitude: 139.78695,
 };
 
 /* global L:readonly */
@@ -14,6 +14,7 @@ const map = L.map('map-canvas')
   .on('load', () => {
     activeFilter();
     activeForm();
+    address.value = `${Coordinates.width}, ${Coordinates.longitude}`;
   })
   .setView({
     lat: Coordinates.width,
@@ -67,6 +68,3 @@ similarCard.forEach((elements) => {
     .addTo(map)
     .bindPopup(generateCard(elements));
 });
-
-
-
