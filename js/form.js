@@ -25,13 +25,36 @@ typeChange();
 const timeIn = adForm.querySelector('#timein');
 const timeOut = adForm.querySelector('#timeout');
 
-const timeChangeArrive = () => {
+const OnSelectChangeArrive = () => {
   timeIn.value = timeOut.value;
 }
 
-const timeChangeExit = () => {
+const OnSelectChangeExit = () => {
   timeOut.value = timeIn.value;
 }
 
-timeIn.addEventListener('change', timeChangeExit);
-timeOut.addEventListener('change', timeChangeArrive);
+timeIn.addEventListener('change', OnSelectChangeExit);
+timeOut.addEventListener('change', OnSelectChangeArrive);
+
+
+const fieldsets = adForm.querySelectorAll('fieldset');
+const address = adForm.querySelector('#address');
+
+
+const inactiveForm = () => {
+  adForm.classList.add('ad-form--disabled');
+  fieldsets.forEach(fieldset => {
+    fieldset.disabled = true;
+  });
+};
+
+inactiveForm();
+
+const activeForm =() => {
+  adForm.classList.remove('ad-form--disabled');
+  fieldsets.forEach(fieldset => {
+    fieldset.disabled = false;
+  });
+}
+
+export {activeForm, address}

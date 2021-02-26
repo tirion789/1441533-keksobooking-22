@@ -1,7 +1,6 @@
-import {createOffer} from './createOffer.js';
+import {createOffer} from './create-offer.js';
 
 const cardTemplate = document.querySelector('#card').content.querySelector('.popup');
-const mapCanvas = document.querySelector('#map-canvas');
 
 const TYPE_OF_HOUSING = {
   flat: 'Квартира',
@@ -43,4 +42,5 @@ const generateCard = ({author, offer}) => {
 
 const generateCards = similarCard.map(generateCard)
 createCardsFragment.appendChild(generateCards[0]);
-mapCanvas.appendChild(createCardsFragment);
+
+export {similarCard, generateCard};
