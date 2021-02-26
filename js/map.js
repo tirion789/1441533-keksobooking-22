@@ -8,6 +8,8 @@ const Coordinates = {
   longitude: 139.78145,
 };
 
+/* global L:readonly */
+
 const map = L.map('map-canvas')
   .on('load', () => {
     activeFilter();
@@ -31,12 +33,12 @@ const mainPinMarker = L.icon({
 });
 
 const marker = L.marker({
-  lat: 35.65841,
-  lng: 139.78145,
+  lat: Coordinates.width,
+  lng: Coordinates.longitude,
 }, {
   draggable: true,
   icon: mainPinMarker,
-},);
+} );
 
 marker.addTo(map);
 
