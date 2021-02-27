@@ -7,6 +7,11 @@ const Coordinates = {
   longitude: 139.78695,
 };
 
+const Icon = {
+  iconUrl: [45, 45],
+  iconAnchor: [24, 45],
+}
+
 /* global L:readonly */
 
 const map = L.map('map-canvas')
@@ -28,8 +33,8 @@ L.tileLayer(
 
 const mainPinMarker = L.icon({
   iconUrl: './img/main-pin.svg',
-  iconSize: [45, 45],
-  iconAnchor: [24, 45],
+  iconSize: Icon.iconUrl,
+  iconAnchor: Icon.iconAnchor,
 });
 
 const marker = L.marker({
@@ -48,8 +53,8 @@ marker.on('move', (evt) => {
 
 const randomPin = L.icon({
   iconUrl: './img/pin.svg',
-  iconSize: [45, 45],
-  iconAnchor: [24, 45],
+  iconSize: Icon.iconUrl,
+  iconAnchor: Icon.iconAnchor,
 });
 
 similarCard.forEach((element) => {
@@ -67,5 +72,3 @@ similarCard.forEach((element) => {
     .addTo(map)
     .bindPopup(generateCard(element));
 });
-
-
