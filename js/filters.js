@@ -2,7 +2,7 @@ const filterForm = document.querySelector('.map__filters');
 const selectsFilterForm = filterForm.querySelectorAll('select');
 const featuresFilterForm = filterForm.querySelector('#housing-features');
 
-const inactiveFilter = () => {
+const inactivateFilter = () => {
   filterForm.classList.add('map__filters--disabled');
   featuresFilterForm.disabled = true;
   selectsFilterForm.forEach(select => {
@@ -10,10 +10,10 @@ const inactiveFilter = () => {
   });
 };
 
-inactiveFilter();
+inactivateFilter();
 
 
-const activeFilter = () => {
+const activateFilter = () => {
   filterForm.classList.remove('map__filters--disabled');
   featuresFilterForm.disabled = false;
   selectsFilterForm.forEach(select => {
@@ -21,4 +21,4 @@ const activeFilter = () => {
   });
 }
 
-export {activeFilter}
+export {activateFilter}

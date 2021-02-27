@@ -1,19 +1,23 @@
-import {activeFilter} from './filters.js';
-import {activeForm, address} from './form.js';
+import {activateFilter} from './filters.js';
+import {activateForm, address} from './form.js';
 import {similarCard, generateCard} from './card.js';
-
 
 const Coordinates = {
   width: 35.65061,
   longitude: 139.78695,
 };
 
+const Icon = {
+  iconUrl: [45, 45],
+  iconAnchor: [24, 45],
+}
+
 /* global L:readonly */
 
 const map = L.map('map-canvas')
   .on('load', () => {
-    activeFilter();
-    activeForm();
+    activateFilter();
+    activateForm();
     address.value = `${Coordinates.width}, ${Coordinates.longitude}`;
   })
   .setView({
@@ -29,8 +33,8 @@ L.tileLayer(
 
 const mainPinMarker = L.icon({
   iconUrl: './img/main-pin.svg',
-  iconSize: [45, 45],
-  iconAnchor: [24, 45],
+  iconSize: Icon.iconUrl,
+  iconAnchor: Icon.iconAnchor,
 });
 
 const marker = L.marker({
@@ -49,15 +53,15 @@ marker.on('move', (evt) => {
 
 const randomPin = L.icon({
   iconUrl: './img/pin.svg',
-  iconSize: [45, 45],
-  iconAnchor: [24, 45],
+  iconSize: Icon.iconUrl,
+  iconAnchor: Icon.iconAnchor,
 });
 
-similarCard.forEach((elements) => {
+similarCard.forEach((element) => {
   const blueMarker = L.marker(
     {
-      lat: elements.location.x,
-      lng: elements.location.y,
+      lat: element.location.x,
+      lng: element.location.y,
     },
     {
       icon: randomPin,
@@ -66,5 +70,5 @@ similarCard.forEach((elements) => {
 
   blueMarker
     .addTo(map)
-    .bindPopup(generateCard(elements));
+    .bindPopup(generateCard(element));
 });
