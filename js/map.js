@@ -1,7 +1,6 @@
-import {activeFilter} from './filters.js';
-import {activeForm, address} from './form.js';
+import {activateFilter} from './filters.js';
+import {activateForm, address} from './form.js';
 import {similarCard, generateCard} from './card.js';
-
 
 const Coordinates = {
   width: 35.65061,
@@ -12,8 +11,8 @@ const Coordinates = {
 
 const map = L.map('map-canvas')
   .on('load', () => {
-    activeFilter();
-    activeForm();
+    activateFilter();
+    activateForm();
     address.value = `${Coordinates.width}, ${Coordinates.longitude}`;
   })
   .setView({
@@ -53,11 +52,11 @@ const randomPin = L.icon({
   iconAnchor: [24, 45],
 });
 
-similarCard.forEach((elements) => {
+similarCard.forEach((element) => {
   const blueMarker = L.marker(
     {
-      lat: elements.location.x,
-      lng: elements.location.y,
+      lat: element.location.x,
+      lng: element.location.y,
     },
     {
       icon: randomPin,
@@ -66,5 +65,7 @@ similarCard.forEach((elements) => {
 
   blueMarker
     .addTo(map)
-    .bindPopup(generateCard(elements));
+    .bindPopup(generateCard(element));
 });
+
+
