@@ -21,4 +21,8 @@ const activateFilter = () => {
   });
 }
 
-export {activateFilter}
+const filtersReset = () => {
+  filterForm.reset();
+}
+
+export {activateFilter, filtersReset}

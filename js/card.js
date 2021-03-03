@@ -1,5 +1,3 @@
-import {createOffer} from './create-offer.js';
-
 const cardTemplate = document.querySelector('#card').content.querySelector('.popup');
 
 const TYPE_OF_HOUSING = {
@@ -9,9 +7,6 @@ const TYPE_OF_HOUSING = {
   palace: 'Дворец ',
 };
 
-const similarCard = createOffer();
-
-const createCardsFragment = document.createDocumentFragment();
 
 const generateCard = ({author, offer}) => {
   const cardElement = cardTemplate.cloneNode(true);
@@ -40,7 +35,5 @@ const generateCard = ({author, offer}) => {
   return cardElement;
 };
 
-const generateCards = similarCard.map(generateCard)
-createCardsFragment.appendChild(generateCards[0]);
 
-export {similarCard, generateCard};
+export {generateCard};

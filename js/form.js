@@ -1,3 +1,9 @@
+import {filtersReset} from './filters.js';
+import {discoveryErrorPopup, discoverySuccessPopup} from './popups.js';
+import {sendData} from './server-api.js';
+// import {resetMap} from './map.js';
+
+
 const MIN_PRICE_OF_HOUSING = {
   bungalow: 0,
   flat: 1000,
@@ -62,7 +68,7 @@ const rooms = adForm.querySelector('#room_number');
 const capacity = adForm.querySelector('#capacity');
 
 
-const onCheckRoomsAndGuest = () => {
+const checkRoomsAndGuest = () => {
   if ((rooms.value == 100) && (capacity.value > 0)) {
     capacity.setCustomValidity('100 Комнат может быть только не для гостей')
   } else if ((rooms.value < 100) && (capacity.value == 0)) {
@@ -76,11 +82,45 @@ const onCheckRoomsAndGuest = () => {
 }
 
 capacity.addEventListener('change', () => {
-  onCheckRoomsAndGuest();
+  checkRoomsAndGuest();
 })
 
 rooms.addEventListener('change', () => {
-  onCheckRoomsAndGuest();
+  checkRoomsAndGuest();
 })
+
+const resetFormButton = adForm.querySelector('.ad-form__reset')
+
+resetFormButton.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  resetAllForm();
+})
+
+const resetForm = () => {
+  adForm.reset();
+}
+
+const resetAllForm = () => {
+  filtersReset();
+  resetForm();
+  // resetMap();
+}
+
+
+const setUserFormSubmit = (onSuccess) => {
+  adForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+
+    sendData(
+      () => onSuccess(discoverySuccessPopup()),
+      () => discoveryErrorPopup(),
+      new FormData(evt.target),
+    );
+  });
+};
+
+setUserFormSubmit(resetAllForm);
+
+
 
 export {activateForm, address}

@@ -5,3 +5,6 @@ import './card.js';
 import './form.js';
 import './map.js';
 import './filters.js';
+import './popups.js';
+import  './server-api.js';
+
