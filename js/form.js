@@ -11,6 +11,10 @@ const MIN_PRICE_OF_HOUSING = {
   palace: 10000,
 }
 
+const setAddress = (x, y) => {
+  address.value = `${x}, ${y}`;
+}
+
 const adForm = document.querySelector('.ad-form');
 
 const priceHousing = adForm.querySelector('#price');
@@ -123,4 +127,4 @@ setUserFormSubmit(resetAllForm);
 
 
 
-export {activateForm, address}
+export {activateForm, address, setAddress}

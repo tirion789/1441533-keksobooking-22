@@ -44,3 +44,4 @@ main.addEventListener('click', closeErrorPopup);
 main.addEventListener('click', closeSuccessPopup);
 
 export {discoveryErrorPopup, discoverySuccessPopup}
+

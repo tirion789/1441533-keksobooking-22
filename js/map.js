@@ -1,5 +1,5 @@
 import {activateFilter} from './filters.js'
-import {activateForm,address} from './form.js';
+import {activateForm, setAddress} from './form.js';
 import {generateCard} from './card.js';
 
 
@@ -15,9 +15,9 @@ const Icon = {
   iconAnchor: [24, 45],
 }
 
-const addressValue = () => {
-  address.value = `${Coordinates.width}, ${Coordinates.longitude}`;
-}
+
+setAddress(Coordinates.width, Coordinates.longitude);
+
 
 /* global L:readonly */
 
@@ -25,7 +25,7 @@ const map = L.map('map-canvas')
   .on('load', () => {
     activateFilter();
     activateForm();
-    addressValue();
+    setAddress(Coordinates.width, Coordinates.longitude);
   })
   .setView({
     lat: Coordinates.width,
@@ -55,7 +55,7 @@ const marker = L.marker({
 marker.addTo(map);
 
 marker.on('move', (evt) => {
-  address.value = `${evt.target.getLatLng().lat.toFixed(5)}, ${evt.target.getLatLng().lng.toFixed(5)}`;
+  setAddress(evt.target.getLatLng().lat.toFixed(5), evt.target.getLatLng().lng.toFixed(5))
 });
 
 const randomPin = L.icon({
@@ -67,7 +67,7 @@ const randomPin = L.icon({
 const resetMapCoordinate = () => {
   map.setView({lat: Coordinates.width, lng: Coordinates.longitude}, HELP_COORDINATES);
   marker.setLatLng({lat: Coordinates.width,lng: Coordinates.longitude});
-  addressValue();
+  setAddress(Coordinates.width, Coordinates.longitude);
 };
 
 const createServerOffers = (cards) => {
