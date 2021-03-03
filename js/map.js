@@ -1,6 +1,7 @@
-import {activateFilter} from './filters.js';
+import {activateFilter} from './filters.js'
 import {activateForm,address} from './form.js';
-// import {generateCard} from './card.js';
+import {generateCard} from './card.js';
+
 
 const Coordinates = {
   width: 35.65061,
@@ -9,13 +10,13 @@ const Coordinates = {
 
 const HELP_COORDINATES = 12
 
-const addressValue = () => {
-  address.value = `${Coordinates.width}, ${Coordinates.longitude}`;
-}
-
 const Icon = {
   iconUrl: [45, 45],
   iconAnchor: [24, 45],
+}
+
+const addressValue = () => {
+  address.value = `${Coordinates.width}, ${Coordinates.longitude}`;
 }
 
 /* global L:readonly */
@@ -57,32 +58,31 @@ marker.on('move', (evt) => {
   address.value = `${evt.target.getLatLng().lat.toFixed(5)}, ${evt.target.getLatLng().lng.toFixed(5)}`;
 });
 
-// const randomPin = L.icon({
-//   iconUrl: './img/pin.svg',
-//   iconSize: Icon.iconUrl,
-//   iconAnchor: Icon.iconAnchor,
-// });
+const randomPin = L.icon({
+  iconUrl: './img/pin.svg',
+  iconSize: Icon.iconUrl,
+  iconAnchor: Icon.iconAnchor,
+});
 
-const resetMap = () => {
-  map.setView(Coordinates.width, Coordinates.longitude);
-  marker.setLatLng(Coordinates.longitude, Coordinates.longitude);
+const resetMapCoordinate = () => {
+  map.setView({lat: Coordinates.width, lng: Coordinates.longitude}, HELP_COORDINATES);
+  marker.setLatLng({lat: Coordinates.width,lng: Coordinates.longitude});
   addressValue();
+};
+
+const createServerOffers = (cards) => {
+  cards.forEach((card) => {
+    const blueMarker = L.marker({
+      lat: card.location.lat,
+      lng: card.location.lng,
+    }, {
+      icon: randomPin,
+    } );
+
+    blueMarker
+      .addTo(map)
+      .bindPopup(generateCard(card));
+  });
 }
 
-// similarCard.forEach((element) => {
-//   const blueMarker = L.marker(
-//     {
-//       lat: element.location.x,
-//       lng: element.location.y,
-//     },
-//     {
-//       icon: randomPin,
-//     },
-//   );
-
-//   blueMarker
-//     .addTo(map)
-//     .bindPopup(generateCard(element));
-// });
-
-export {resetMap}
+export {createServerOffers, resetMapCoordinate}

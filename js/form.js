@@ -1,7 +1,7 @@
 import {filtersReset} from './filters.js';
 import {discoveryErrorPopup, discoverySuccessPopup} from './popups.js';
 import {sendData} from './server-api.js';
-// import {resetMap} from './map.js';
+import {resetMap} from './main.js';
 
 
 const MIN_PRICE_OF_HOUSING = {
@@ -89,6 +89,7 @@ rooms.addEventListener('change', () => {
   checkRoomsAndGuest();
 })
 
+
 const resetFormButton = adForm.querySelector('.ad-form__reset')
 
 resetFormButton.addEventListener('click', (evt) => {
@@ -103,9 +104,8 @@ const resetForm = () => {
 const resetAllForm = () => {
   filtersReset();
   resetForm();
-  // resetMap();
+  resetMap();
 }
-
 
 const setUserFormSubmit = (onSuccess) => {
   adForm.addEventListener('submit', (evt) => {

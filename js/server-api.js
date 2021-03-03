@@ -1,7 +1,11 @@
 import {showAlert} from './util.js'
 
+
+const serverData = 'https://22.javascript.pages.academy/keksobooking/data'
+const serverShipment = 'https://22.javascript.pages.academy/keksobooking'
+
 const getData = (onSuccess) => {
-  fetch('https://22.javascript.pages.academy/keksobooking/data')
+  fetch(serverData)
     .then((response) => response.json())
     .then(onSuccess)
     .catch(showAlert)
@@ -10,7 +14,7 @@ const getData = (onSuccess) => {
 
 const sendData = (onSuccess, onFail, body) => {
   fetch(
-    'https://22.javascript.pages.academy/keksobooking',
+    serverShipment,
     {
       method: 'POST',
       body,
