@@ -73,9 +73,9 @@ const capacity = adForm.querySelector('#capacity');
 
 
 const checkRoomsAndGuest = () => {
-  if ((rooms.value == 100) && (capacity.value > 0)) {
+  if ((rooms.value >= 100) && (capacity.value > 0)) {
     capacity.setCustomValidity('100 Комнат может быть только не для гостей')
-  } else if ((rooms.value < 100) && (capacity.value == 0)) {
+  } else if ((rooms.value < 100) && (capacity.value <= 0)) {
     capacity.setCustomValidity('Не для гостей может быть только 100 комнат')
   } else if ((rooms.value) < (capacity.value)) {
     capacity.setCustomValidity('Число гостей не может быть больше числа комнат')

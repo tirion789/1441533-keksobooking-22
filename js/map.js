@@ -70,7 +70,7 @@ const resetMapCoordinate = () => {
   setAddress(Coordinates.width, Coordinates.longitude);
 };
 
-const createServerOffers = (cards) => {
+const createOffers = (cards) => {
   cards.forEach((card) => {
     const blueMarker = L.marker({
       lat: card.location.lat,
@@ -85,4 +85,4 @@ const createServerOffers = (cards) => {
   });
 }
 
-export {createServerOffers, resetMapCoordinate}
+export {createOffers, resetMapCoordinate}
