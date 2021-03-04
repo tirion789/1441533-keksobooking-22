@@ -1,16 +1,23 @@
-import {activateFilter} from './filters.js';
-import {activateForm, address} from './form.js';
-import {similarCard, generateCard} from './card.js';
+import {activateFilter} from './filters.js'
+import {activateForm, setAddress} from './form.js';
+import {generateCard} from './card.js';
+
 
 const Coordinates = {
   width: 35.65061,
   longitude: 139.78695,
 };
 
+const HELP_COORDINATES = 12
+
 const Icon = {
   iconUrl: [45, 45],
   iconAnchor: [24, 45],
 }
+
+
+setAddress(Coordinates.width, Coordinates.longitude);
+
 
 /* global L:readonly */
 
@@ -18,12 +25,12 @@ const map = L.map('map-canvas')
   .on('load', () => {
     activateFilter();
     activateForm();
-    address.value = `${Coordinates.width}, ${Coordinates.longitude}`;
+    setAddress(Coordinates.width, Coordinates.longitude);
   })
   .setView({
     lat: Coordinates.width,
     lng: Coordinates.longitude,
-  }, 12);
+  }, HELP_COORDINATES);
 
 L.tileLayer(
   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -43,12 +50,12 @@ const marker = L.marker({
 }, {
   draggable: true,
   icon: mainPinMarker,
-} );
+});
 
 marker.addTo(map);
 
 marker.on('move', (evt) => {
-  address.value = `${evt.target.getLatLng().lat.toFixed(5)}, ${evt.target.getLatLng().lng.toFixed(5)}`;
+  setAddress(evt.target.getLatLng().lat.toFixed(5), evt.target.getLatLng().lng.toFixed(5))
 });
 
 const randomPin = L.icon({
@@ -57,18 +64,25 @@ const randomPin = L.icon({
   iconAnchor: Icon.iconAnchor,
 });
 
-similarCard.forEach((element) => {
-  const blueMarker = L.marker(
-    {
-      lat: element.location.x,
-      lng: element.location.y,
-    },
-    {
-      icon: randomPin,
-    },
-  );
+const resetMapCoordinate = () => {
+  map.setView({lat: Coordinates.width, lng: Coordinates.longitude}, HELP_COORDINATES);
+  marker.setLatLng({lat: Coordinates.width,lng: Coordinates.longitude});
+  setAddress(Coordinates.width, Coordinates.longitude);
+};
 
-  blueMarker
-    .addTo(map)
-    .bindPopup(generateCard(element));
-});
+const createServerOffers = (cards) => {
+  cards.forEach((card) => {
+    const blueMarker = L.marker({
+      lat: card.location.lat,
+      lng: card.location.lng,
+    }, {
+      icon: randomPin,
+    } );
+
+    blueMarker
+      .addTo(map)
+      .bindPopup(generateCard(card));
+  });
+}
+
+export {createServerOffers, resetMapCoordinate}
