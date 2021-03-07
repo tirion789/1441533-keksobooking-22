@@ -4,7 +4,7 @@ const getArbitraryInteger = (min, max) => {
   }
   const rand = min - 0.5 + Math.random() * (max - min + 1);
   return Math.round(rand);
-}
+};
 
 const getRandomNumber = (min, max, numberFloatPoint) => {
   if (min > max) {
@@ -12,7 +12,7 @@ const getRandomNumber = (min, max, numberFloatPoint) => {
   }
   const randomPoint = Math.random() * (max - min) + min;
   return randomPoint.toFixed(numberFloatPoint);
-}
+};
 
 const getArbitraryArrayElement = (element) => element[Math.floor(Math.random() * element.length)];
 
@@ -39,15 +39,13 @@ const showAlert = () => {
   alertContainer.style.textAlign = 'center';
   alertContainer.style.backgroundColor = 'red';
 
-  alertContainer.textContent = ('НЕ УДАЛОСЬ ПОЛУЧИТЬ ДАННЫЕ С СЕРВЕРА');
+  alertContainer.textContent = 'НЕ УДАЛОСЬ ПОЛУЧИТЬ ДАННЫЕ С СЕРВЕРА';
 
   document.body.append(alertContainer);
 
   setTimeout(() => {
     alertContainer.remove();
   }, ALERT_SHOW_TIME);
-}
+};
 
-
-
-export {getArbitraryInteger, getRandomNumber, getArbitraryArrayElement, getArbitraryArrayLength, showAlert};
+export { getArbitraryInteger, getRandomNumber, getArbitraryArrayElement, getArbitraryArrayLength, showAlert };

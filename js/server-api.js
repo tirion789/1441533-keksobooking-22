@@ -1,25 +1,20 @@
-import {showAlert} from './util.js'
+import { showAlert } from './util.js';
 
-
-const serverData = 'https://22.javascript.pages.academy/keksobooking/data'
-const serverShipment = 'https://22.javascript.pages.academy/keksobooking'
+const SERVER_DATA = 'https://22.javascript.pages.academy/keksobooking/data';
+const SERVER_SHIPMENT = 'https://22.javascript.pages.academy/keksoasdfbooking';
 
 const getData = (onSuccess) => {
-  fetch(serverData)
+  fetch(SERVER_DATA)
     .then((response) => response.json())
     .then(onSuccess)
-    .catch(showAlert)
+    .catch(showAlert);
 };
 
-
 const sendData = (onSuccess, onFail, body) => {
-  fetch(
-    serverShipment,
-    {
-      method: 'POST',
-      body,
-    },
-  )
+  fetch(SERVER_SHIPMENT, {
+    method: 'POST',
+    body,
+  })
     .then((response) => {
       if (response.ok) {
         onSuccess();
@@ -32,4 +27,4 @@ const sendData = (onSuccess, onFail, body) => {
     });
 };
 
-export {getData, sendData};
+export { getData, sendData };

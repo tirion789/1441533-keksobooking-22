@@ -1,6 +1,5 @@
-import {getArbitraryInteger, getRandomNumber, getArbitraryArrayElement, getArbitraryArrayLength} from './util.js';
-import {CARDS_COUNT, NUMBER_FLOAT_COORDINATE, YCoordinate , XCoordinate, NumberGuests, RoomsNumber, PriceRange, AvatarNumber, DESCRIPTION, PHOTOS, FEATURES, CHECKOUT, CHECKIN, TYPE, TITLE} from './data.js'
-
+import { getArbitraryInteger, getRandomNumber, getArbitraryArrayElement, getArbitraryArrayLength } from './util.js';
+import { CARDS_COUNT, NUMBER_FLOAT_COORDINATE, YCoordinate, XCoordinate, NumberGuests, RoomsNumber, PriceRange, AvatarNumber, DESCRIPTION, PHOTOS, FEATURES, CHECKOUT, CHECKIN, TYPE, TITLE } from './data.js';
 
 const getLocation = () => ({
   x: getRandomNumber(XCoordinate.MIN, XCoordinate.MAX, NUMBER_FLOAT_COORDINATE),
@@ -35,4 +34,4 @@ const createOffer = () => new Array(CARDS_COUNT).fill(null).map(getFinalObject);
 
 createOffer;
 
-export {createOffer};
+export { createOffer };
