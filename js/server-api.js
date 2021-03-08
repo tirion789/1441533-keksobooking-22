@@ -1,7 +1,7 @@
 import { showAlert } from './util.js';
 
 const SERVER_DATA = 'https://22.javascript.pages.academy/keksobooking/data';
-const SERVER_SHIPMENT = 'https://22.javascript.pages.academy/keksoasdfbooking';
+const SERVER_SHIPMENT = 'https://22.javascript.pages.academy/keksobooking';
 
 const getData = (onSuccess) => {
   fetch(SERVER_DATA)

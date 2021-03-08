@@ -6,16 +6,21 @@ import './form.js';
 import './map.js';
 import './filters.js';
 import './popups.js';
-import { createOffers } from './map.js';
+import { createOffers,   removeMarkers } from './map.js';
 import { getData } from './server-api.js';
 import { resetMapCoordinate } from './map.js';
 import { setFiltersReset, setFiltersChange } from './filters.js';
 
+
 getData((offers) => {
   createOffers(offers);
-  setFiltersChange(() => createOffers(offers));
+  setFiltersChange(() => {
+    removeMarkers(offers);
+    createOffers(offers);})
   setFiltersReset(() => createOffers(offers));
 });
+
+
 
 const resetMap = () => {
   resetMapCoordinate();

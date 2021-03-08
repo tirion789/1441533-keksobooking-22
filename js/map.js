@@ -9,6 +9,8 @@ const Coordinates = {
 
 const HELP_COORDINATES = 12;
 
+const OFFER_LIMITED = 10;
+
 const Icon = {
   iconUrl: [45, 45],
   iconAnchor: [24, 45],
@@ -80,25 +82,24 @@ const removeMarkers = () => {
 };
 
 const createOffers = (cards) => {
-  removeMarkers();
-  cards.reduce((accum, card) => {
-    if (filtersGeneration(card) && accum.length <= 10) {
-      const blueMarker = L.marker(
-        {
-          lat: card.location.lat,
-          lng: card.location.lng,
-        },
-        {
-          icon: offerPin,
-        },
-      );
+cards
+.slice()
+.filter(filtersGeneration)
+.slice(0, OFFER_LIMITED)
+.forEach((card) => {
+  const blueMarker = L.marker(
+    {
+      lat: card.location.lat,
+      lng: card.location.lng,
+    },
+    {
+      icon: offerPin,
+    },
+  );
+  blueMarker
+    .addTo(map)
+    .bindPopup(generateCard(card));
+  markers.push(blueMarker);
+});}
 
-      blueMarker.addTo(map).bindPopup(generateCard(card));
-      markers.push(blueMarker);
-      accum.push(card);
-    }
-    return accum;
-  }, []);
-};
-
-export { createOffers, resetMapCoordinate };
+export { createOffers, resetMapCoordinate, removeMarkers };

@@ -36,63 +36,63 @@ const PriceMoney = {
   MIN: 10000,
 };
 
-const ANY = 'any';
+const DEFOLT_VALUE = 'any';
 
 const filtersReset = () => {
   filterForm.reset();
 };
 
-const filterType = (serverData) => {
-  return filtersHousingType.value === ANY || filtersHousingType.value === serverData.offer.type;
+const filterType = (ad) => {
+  return filtersHousingType.value === DEFOLT_VALUE || filtersHousingType.value === ad;
 };
 
-const filterPrice = (serverData) => {
+const filterPrice = (ad) => {
   switch (filtersHousingPrice.value) {
     case priceEnumeration.ANY:
-      return serverData;
+      return ad;
     case priceEnumeration.MIDDLE:
-      return PriceMoney.MAX >= serverData.offer.price && PriceMoney.MIN <= serverData.offer.price;
+      return PriceMoney.MAX >= ad && PriceMoney.MIN <= ad;
     case priceEnumeration.LOW:
-      return PriceMoney.MIN >= serverData.offer.price;
+      return PriceMoney.MIN >= ad;
     case priceEnumeration.HIGH:
-      return serverData.offer.price >= PriceMoney.MAX;
+      return ad >= PriceMoney.MAX;
   }
 };
 
-const filterFeatures = (serverData) => {
+const filterFeatures = (ad) => {
   const features = featuresFilterForm.querySelectorAll('input:checked');
 
   return Array.from(features).every((feature) => {
-    return serverData.offer.features.includes(feature.value);
+    return ad.includes(feature.value);
   });
 };
 
-const filterRooms = (serverData) => {
-  return filtersHousingRooms.value === ANY || +filtersHousingRooms.value === serverData.offer.rooms;
+const filterRooms = (ad) => {
+  return filtersHousingRooms.value === DEFOLT_VALUE || +filtersHousingRooms.value === ad;
 };
 
-const filterGuests = (serverData) => {
+const filterGuests = (ad) => {
   return (
-    filtersHousingGuests.value === ANY || +filtersHousingGuests.value === serverData.offer.guests
+    filtersHousingGuests.value === DEFOLT_VALUE || +filtersHousingGuests.value === ad
   );
 };
 
-const filtersGeneration = (serverData) => {
+const filtersGeneration = (ad) => {
   return (
-    filterType(serverData) &&
-    filterPrice(serverData) &&
-    filterRooms(serverData) &&
-    filterGuests(serverData) &&
-    filterFeatures(serverData)
+    filterType(ad.offer.type) &&
+    filterPrice(ad.offer.price) &&
+    filterRooms(ad.offer.rooms) &&
+    filterGuests(ad.offer.guests) &&
+    filterFeatures(ad.offer.features)
   );
 };
 
 const setFiltersChange = (cb) => {
-  filterForm.addEventListener('change', () => cb());
+  filterForm.addEventListener('change', cb)
 };
 
 const setFiltersReset = (cb) => {
-  filterForm.addEventListener('Reset', () => cb());
+  filterForm.addEventListener('reset', cb);
 };
 
 export { activateFilter, filtersReset, filtersGeneration, setFiltersReset, setFiltersChange };
