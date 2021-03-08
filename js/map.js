@@ -82,24 +82,23 @@ const removeMarkers = () => {
 };
 
 const createOffers = (cards) => {
-cards
-.slice()
-.filter(filtersGeneration)
-.slice(0, OFFER_LIMITED)
-.forEach((card) => {
-  const blueMarker = L.marker(
-    {
-      lat: card.location.lat,
-      lng: card.location.lng,
-    },
-    {
-      icon: offerPin,
-    },
-  );
-  blueMarker
-    .addTo(map)
-    .bindPopup(generateCard(card));
-  markers.push(blueMarker);
-});}
+  cards
+    .slice()
+    .filter(filtersGeneration)
+    .slice(0, OFFER_LIMITED)
+    .forEach((card) => {
+      const blueMarker = L.marker(
+        {
+          lat: card.location.lat,
+          lng: card.location.lng,
+        },
+        {
+          icon: offerPin,
+        },
+      );
+      blueMarker.addTo(map).bindPopup(generateCard(card));
+      markers.push(blueMarker);
+    });
+};
 
 export { createOffers, resetMapCoordinate, removeMarkers };
