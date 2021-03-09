@@ -67,18 +67,17 @@ const NumberGuests = {
 };
 
 const XCoordinate = {
-  MIN: 35.65000,
-  MAX: 35.70000,
+  MIN: 35.65,
+  MAX: 35.7,
 };
 
 const YCoordinate = {
-  MIN: 139.70000,
-  MAX: 139.80000,
+  MIN: 139.7,
+  MAX: 139.8,
 };
 
 const NUMBER_FLOAT_COORDINATE = 5;
 
 const CARDS_COUNT = 10;
 
-export {CARDS_COUNT, NUMBER_FLOAT_COORDINATE, YCoordinate , XCoordinate, NumberGuests, RoomsNumber, PriceRange, AvatarNumber, DESCRIPTION, PHOTOS, FEATURES, CHECKOUT, CHECKIN, TYPE, TITLE};
-
+export { CARDS_COUNT, NUMBER_FLOAT_COORDINATE, YCoordinate, XCoordinate, NumberGuests, RoomsNumber, PriceRange, AvatarNumber, DESCRIPTION, PHOTOS, FEATURES, CHECKOUT, CHECKIN, TYPE, TITLE };
