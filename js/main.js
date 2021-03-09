@@ -9,7 +9,7 @@ import './popups.js';
 import { createOffers,   removeMarkers } from './map.js';
 import { getData } from './server-api.js';
 import { resetMapCoordinate } from './map.js';
-import { setFiltersReset, setFiltersChange } from './filters.js';
+import { setFiltersBottonReset, setFiltersChange} from './filters.js';
 
 
 getData((offers) => {
@@ -17,9 +17,8 @@ getData((offers) => {
   setFiltersChange(() => {
     removeMarkers(offers);
     createOffers(offers);})
-  setFiltersReset(() => createOffers(offers));
+    setFiltersBottonReset(() => createOffers(offers));
 });
-
 
 
 const resetMap = () => {

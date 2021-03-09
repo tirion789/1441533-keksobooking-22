@@ -93,6 +93,7 @@ resetFormButton.addEventListener('click', (evt) => {
   resetAllForm();
 });
 
+
 const resetForm = () => {
   adForm.reset();
 };
@@ -117,4 +118,4 @@ const setUserFormSubmit = (onSuccess) => {
 
 setUserFormSubmit(resetAllForm);
 
-export { activateForm, address, setAddress };
+export { activateForm, address, setAddress, resetFormButton };

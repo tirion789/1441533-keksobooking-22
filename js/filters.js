@@ -1,3 +1,5 @@
+import {resetFormButton} from './form.js'
+
 const filterForm = document.querySelector('.map__filters');
 const selectsFilterForm = filterForm.querySelectorAll('select');
 const featuresFilterForm = filterForm.querySelector('#housing-features');
@@ -42,57 +44,57 @@ const filtersReset = () => {
   filterForm.reset();
 };
 
-const filterType = (ad) => {
-  return filtersHousingType.value === DEFOLT_VALUE || filtersHousingType.value === ad;
+const filterType = (type) => {
+  return filtersHousingType.value === DEFOLT_VALUE || filtersHousingType.value === type;
 };
 
-const filterPrice = (ad) => {
+const filterPrice = (price) => {
   switch (filtersHousingPrice.value) {
     case priceEnumeration.ANY:
-      return ad;
+      return price;
     case priceEnumeration.MIDDLE:
-      return PriceMoney.MAX >= ad && PriceMoney.MIN <= ad;
+      return PriceMoney.MAX >= price && PriceMoney.MIN <= price;
     case priceEnumeration.LOW:
-      return PriceMoney.MIN >= ad;
+      return PriceMoney.MIN >= price;
     case priceEnumeration.HIGH:
-      return ad >= PriceMoney.MAX;
+      return price >= PriceMoney.MAX;
   }
 };
 
-const filterFeatures = (ad) => {
-  const features = featuresFilterForm.querySelectorAll('input:checked');
+const filterFeatures = (features) => {
+  const featuresList = featuresFilterForm.querySelectorAll('input:checked');
 
-  return Array.from(features).every((feature) => {
-    return ad.includes(feature.value);
+  return Array.from(featuresList).every((feature) => {
+    return features.includes(feature.value);
   });
 };
 
-const filterRooms = (ad) => {
-  return filtersHousingRooms.value === DEFOLT_VALUE || +filtersHousingRooms.value === ad;
+const filterRooms = (rooms) => {
+  return filtersHousingRooms.value === DEFOLT_VALUE || +filtersHousingRooms.value === rooms;
 };
 
-const filterGuests = (ad) => {
+const filterGuests = (guests) => {
   return (
-    filtersHousingGuests.value === DEFOLT_VALUE || +filtersHousingGuests.value === ad
+    filtersHousingGuests.value === DEFOLT_VALUE || +filtersHousingGuests.value === guests
   );
 };
 
-const filtersGeneration = (ad) => {
+const filtersGeneration = ({offer}) => {
   return (
-    filterType(ad.offer.type) &&
-    filterPrice(ad.offer.price) &&
-    filterRooms(ad.offer.rooms) &&
-    filterGuests(ad.offer.guests) &&
-    filterFeatures(ad.offer.features)
+    filterType(offer.type) &&
+    filterPrice(offer.price) &&
+    filterRooms(offer.rooms) &&
+    filterGuests(offer.guests) &&
+    filterFeatures(offer.features)
   );
 };
 
 const setFiltersChange = (cb) => {
   filterForm.addEventListener('change', cb)
+}
+
+const setFiltersBottonReset = (cb) => {
+  resetFormButton.addEventListener('click', cb);
 };
 
-const setFiltersReset = (cb) => {
-  filterForm.addEventListener('reset', cb);
-};
-
-export { activateFilter, filtersReset, filtersGeneration, setFiltersReset, setFiltersChange };
+export { activateFilter, filtersReset, filtersGeneration, setFiltersBottonReset, setFiltersChange };
