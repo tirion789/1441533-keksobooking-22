@@ -1,3 +1,4 @@
+/* global _:readonly */
 import './data.js';
 import './util.js';
 import './create-offer.js';
@@ -15,7 +16,7 @@ const RERENDER_DELAY = 500;
 
 getData((offers) => {
   createOffers(offers);
-  setFiltersChange(_.debounce(
+  setFiltersChange( _.debounce(
     () => (removeMarkers(offers),
     createOffers(offers)),
     RERENDER_DELAY));
