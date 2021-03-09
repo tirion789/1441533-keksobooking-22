@@ -17,7 +17,7 @@ getData((offers) => {
   setFiltersChange(() => {
     removeMarkers(offers);
     createOffers(offers);})
-    setFiltersBottonReset(() => createOffers(offers));
+  setFiltersBottonReset(() => createOffers(offers));
 });
 
 
