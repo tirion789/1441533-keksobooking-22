@@ -33,7 +33,7 @@ const fileChooserPhotos = document.querySelector('.ad-form__input');
 const previewPhotos = document.querySelector('.ad-form__photo');
 
 
-const newCastomImgPhotos = (downloadableСustomFiledPhotos, customPreviewFieldPhotos) => {
+const showNewCastomImgPhotos = (downloadableСustomFiledPhotos, customPreviewFieldPhotos) => {
   const filePhotos = downloadableСustomFiledPhotos.files[0];
   const fileNamePhotos = filePhotos.name.toLowerCase();
 
@@ -52,17 +52,17 @@ const newCastomImgPhotos = (downloadableСustomFiledPhotos, customPreviewFieldPh
   }
 }
 
-const customPreviewPhotos = () => {
+const onCreateImagePreview = () => {
   const createImageElement = document.createElement('img');
   createImageElement.width = previewPhotos.offsetWidth;
   createImageElement.height = previewPhotos.offsetHeight;
   createImageElement.alt = 'Фото жилья';
   previewPhotos.append(createImageElement);
-  newCastomImgPhotos(fileChooserPhotos,  createImageElement)
+  showNewCastomImgPhotos(fileChooserPhotos,  createImageElement)
 };
 
 
-fileChooserPhotos.addEventListener('change', customPreviewPhotos);
+fileChooserPhotos.addEventListener('change', onCreateImagePreview);
 
 const resetPhotos = () => {
   previewPhotos.innerHTML = '';
