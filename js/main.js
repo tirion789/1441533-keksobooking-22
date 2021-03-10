@@ -8,6 +8,7 @@ import './form.js';
 import './map.js';
 import './filters.js';
 import './popups.js';
+import './photos.js'
 import { createOffers } from './map.js';
 import { getData } from './server-api.js';
 import { resetMapCoordinate, removeMarkers } from './map.js';
@@ -17,10 +18,7 @@ const RERENDER_DELAY = 500;
 
 getData((offers) => {
   createOffers(offers);
-  setFiltersChange(_.debounce(
-    () => (removeMarkers(offers),
-    createOffers(offers)),
-    RERENDER_DELAY));
+  setFiltersChange(_.debounce( () => {removeMarkers(offers); createOffers(offers)}, RERENDER_DELAY));
   setFiltersBottonReset(() => createOffers(offers));
 });
 
