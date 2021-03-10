@@ -2,6 +2,7 @@ import { filtersReset } from './filters.js';
 import { discoveryErrorPopup, discoverySuccessPopup } from './popups.js';
 import { sendData } from './server-api.js';
 import { resetMap } from './main.js';
+import {resetAvatar, resetPhotos} from './photos.js';
 
 const MIN_PRICE_OF_HOUSING = {
   bungalow: 0,
@@ -102,6 +103,8 @@ const resetAllForm = () => {
   filtersReset();
   resetForm();
   resetMap();
+  resetAvatar();
+  resetPhotos();
 };
 
 const setUserFormSubmit = (onSuccess) => {
