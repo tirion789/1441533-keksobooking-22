@@ -9,18 +9,18 @@ fileChooserAvatar.addEventListener('change', () => {
   const fileAvatar = fileChooserAvatar.files[0];
   const fileNameAvatar =  fileAvatar.name.toLowerCase();
 
-  const matches = FILE_TYPES.some((it) => {
+  const matchesAvatar = FILE_TYPES.some((it) => {
     return fileNameAvatar.endsWith(it);
   });
 
-  if (matches) {
-    const reader = new FileReader();
+  if (matchesAvatar) {
+    const readerAvatar = new FileReader();
 
-    reader.addEventListener('load', () => {
-      previewAvatar.src = reader.result;
+    readerAvatar.addEventListener('load', () => {
+      previewAvatar.src = readerAvatar.result;
     });
 
-    reader.readAsDataURL(fileAvatar);
+    readerAvatar.readAsDataURL(fileAvatar);
   }
 });
 
