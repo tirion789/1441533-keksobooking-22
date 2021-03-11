@@ -1,8 +1,9 @@
 const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
+const DEFAULT_AVATAR = 'img/muffin-grey.svg'
 
 const fileChooserAvatar = document.querySelector('.ad-form-header__input');
 const previewAvatar = document.querySelector('.ad-form-header__preview img');
-const DEFOLT_AVATAR = 'img/muffin-grey.svg'
+
 
 
 fileChooserAvatar.addEventListener('change', () => {
@@ -25,7 +26,7 @@ fileChooserAvatar.addEventListener('change', () => {
 });
 
 const resetAvatar = () => {
-  previewAvatar.src = DEFOLT_AVATAR;
+  previewAvatar.src = DEFAULT_AVATAR;
 };
 
 
