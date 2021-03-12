@@ -48,5 +48,4 @@ const getArbitraryArrayLength = (array) => {
   return newArray;
 };
 
-
 export { getArbitraryInteger, getRandomNumber, getArbitraryArrayElement, getArbitraryArrayLength, showAlert };
