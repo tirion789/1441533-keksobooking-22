@@ -1,5 +1,7 @@
 import {resetFormButton} from './form.js'
 
+const DEFOLT_VALUE = 'any';
+
 const filterForm = document.querySelector('.map__filters');
 const selectsFilterForm = filterForm.querySelectorAll('select');
 const featuresFilterForm = filterForm.querySelector('#housing-features');
@@ -27,10 +29,10 @@ const activateFilter = () => {
 };
 
 const priceEnumeration = {
-  ANY: 'any',
-  MIDDLE: 'middle',
-  LOW: 'low',
-  HIGH: 'high',
+  any: 'any',
+  middle: 'middle',
+  low: 'low',
+  high: 'high',
 };
 
 const PriceMoney = {
@@ -38,30 +40,29 @@ const PriceMoney = {
   MIN: 10000,
 };
 
-const DEFOLT_VALUE = 'any';
 
 const filtersReset = () => {
   filterForm.reset();
 };
 
-const filterType = (type) => {
+const filteringType = (type) => {
   return filtersHousingType.value === DEFOLT_VALUE || filtersHousingType.value === type;
 };
 
-const filterPrice = (price) => {
+const filteringPrice = (price) => {
   switch (filtersHousingPrice.value) {
-    case priceEnumeration.ANY:
+    case priceEnumeration.any:
       return price;
-    case priceEnumeration.MIDDLE:
+    case priceEnumeration.middle:
       return PriceMoney.MAX >= price && PriceMoney.MIN <= price;
-    case priceEnumeration.LOW:
+    case priceEnumeration.low:
       return PriceMoney.MIN >= price;
-    case priceEnumeration.HIGH:
+    case priceEnumeration.high:
       return price >= PriceMoney.MAX;
   }
 };
 
-const filterFeatures = (features) => {
+const filteringFeatures = (features) => {
   const featuresList = featuresFilterForm.querySelectorAll('input:checked');
 
   return Array.from(featuresList).every((feature) => {
@@ -69,11 +70,11 @@ const filterFeatures = (features) => {
   });
 };
 
-const filterRooms = (rooms) => {
+const filteringRooms = (rooms) => {
   return filtersHousingRooms.value === DEFOLT_VALUE || +filtersHousingRooms.value === rooms;
 };
 
-const filterGuests = (guests) => {
+const filteringGuests = (guests) => {
   return (
     filtersHousingGuests.value === DEFOLT_VALUE || +filtersHousingGuests.value === guests
   );
@@ -81,11 +82,11 @@ const filterGuests = (guests) => {
 
 const filtersGeneration = ({offer}) => {
   return (
-    filterType(offer.type) &&
-    filterPrice(offer.price) &&
-    filterRooms(offer.rooms) &&
-    filterGuests(offer.guests) &&
-    filterFeatures(offer.features)
+    filteringType(offer.type) &&
+    filteringPrice(offer.price) &&
+    filteringRooms(offer.rooms) &&
+    filteringGuests(offer.guests) &&
+    filteringFeatures(offer.features)
   );
 };
 

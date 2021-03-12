@@ -1,6 +1,6 @@
 const cardTemplate = document.querySelector('#card').content.querySelector('.popup');
 
-const TYPE_OF_HOUSING = {
+const typeOfHousing = {
   flat: 'Квартира',
   bungalow: 'Бунгало',
   house: 'Дом',
@@ -13,7 +13,7 @@ const generateCard = ({ author, offer }) => {
   cardElement.querySelector('.popup__title').textContent = offer.title;
   cardElement.querySelector('.popup__text--address').textContent = offer.address;
   cardElement.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь`;
-  cardElement.querySelector('.popup__type').textContent = TYPE_OF_HOUSING[offer.type];
+  cardElement.querySelector('.popup__type').textContent = typeOfHousing[offer.type];
   cardElement.querySelector(
     '.popup__text--capacity',
   ).textContent = `${offer.rooms} комнаты для ${offer.guests} гостей`;

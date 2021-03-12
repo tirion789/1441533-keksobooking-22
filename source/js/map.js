@@ -2,11 +2,6 @@ import { activateFilter, filtersGeneration } from './filters.js';
 import { activateForm, setAddress } from './form.js';
 import { generateCard } from './card.js';
 
-const Coordinates = {
-  width: 35.65061,
-  longitude: 139.78695,
-};
-
 const HELP_COORDINATES = 12;
 
 const OFFER_LIMITED = 10;
@@ -16,7 +11,13 @@ const Icon = {
   iconAnchor: [24, 45],
 };
 
-setAddress(Coordinates.width, Coordinates.longitude);
+const Coordinates = {
+  WIDTH: 35.65061,
+  lONGITUDE: 139.78695,
+};
+
+
+setAddress(Coordinates.WIDTH, Coordinates.lONGITUDE);
 
 /* global L:readonly */
 
@@ -24,12 +25,12 @@ const map = L.map('map-canvas')
   .on('load', () => {
     activateFilter();
     activateForm();
-    setAddress(Coordinates.width, Coordinates.longitude);
+    setAddress(Coordinates.WIDTH, Coordinates.lONGITUDE);
   })
   .setView(
     {
-      lat: Coordinates.width,
-      lng: Coordinates.longitude,
+      lat: Coordinates.WIDTH,
+      lng: Coordinates.lONGITUDE,
     },
     HELP_COORDINATES,
   );
@@ -47,8 +48,8 @@ const mainPinMarker = L.icon({
 
 const marker = L.marker(
   {
-    lat: Coordinates.width,
-    lng: Coordinates.longitude,
+    lat: Coordinates.WIDTH,
+    lng: Coordinates.lONGITUDE,
   },
   {
     draggable: true,
@@ -69,9 +70,9 @@ const offerPin = L.icon({
 });
 
 const resetMapCoordinate = () => {
-  map.setView({ lat: Coordinates.width, lng: Coordinates.longitude }, HELP_COORDINATES);
-  marker.setLatLng({ lat: Coordinates.width, lng: Coordinates.longitude });
-  setAddress(Coordinates.width, Coordinates.longitude);
+  map.setView({ lat: Coordinates.WIDTH, lng: Coordinates.lONGITUDE }, HELP_COORDINATES);
+  marker.setLatLng({ lat: Coordinates.WIDTH, lng: Coordinates.lONGITUDE });
+  setAddress(Coordinates.WIDTH, Coordinates.lONGITUDE);
 };
 
 let markers = [];

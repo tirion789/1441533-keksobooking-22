@@ -46,6 +46,10 @@ const PHOTOS = [
   'http://o0.github.io/assets/images/tokyo/hotel3.jpg',
 ];
 
+const NUMBER_FLOAT_COORDINATE = 5;
+
+const CARDS_COUNT = 10;
+
 const AvatarNumber = {
   MIN: 1,
   MAX: 8,
@@ -75,9 +79,5 @@ const YCoordinate = {
   MIN: 139.7,
   MAX: 139.8,
 };
-
-const NUMBER_FLOAT_COORDINATE = 5;
-
-const CARDS_COUNT = 10;
 
 export { CARDS_COUNT, NUMBER_FLOAT_COORDINATE, YCoordinate, XCoordinate, NumberGuests, RoomsNumber, PriceRange, AvatarNumber, DESCRIPTION, PHOTOS, FEATURES, CHECKOUT, CHECKIN, TYPE, TITLE };
