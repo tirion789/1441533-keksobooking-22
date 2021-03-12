@@ -4,11 +4,6 @@ import { sendData } from './server-api.js';
 import { resetMap } from './main.js';
 import {resetAvatar, resetPhotos} from './photos.js';
 
-const adForm = document.querySelector('.ad-form');
-const priceHousing = adForm.querySelector('#price');
-const typeHousing = adForm.querySelector('#type');
-const rooms = adForm.querySelector('#room_number');
-const capacity = adForm.querySelector('#capacity');
 
 const MIN_PRICE_OF_HOUSING = {
   bungalow: 0,
@@ -21,6 +16,12 @@ const ValueGuests = {
   MIN: 0,
   MAX: 100,
 }
+
+const adForm = document.querySelector('.ad-form');
+const priceHousing = adForm.querySelector('#price');
+const typeHousing = adForm.querySelector('#type');
+const rooms = adForm.querySelector('#room_number');
+const capacity = adForm.querySelector('#capacity');
 
 const checkRoomsAndGuest = () => {
   if (rooms.value >= ValueGuests.MAX && capacity.value > ValueGuests.MIN) {

@@ -4,8 +4,6 @@ const DEFAULT_AVATAR = 'img/muffin-grey.svg'
 const fileChooserAvatar = document.querySelector('.ad-form-header__input');
 const previewAvatar = document.querySelector('.ad-form-header__preview img');
 
-
-
 fileChooserAvatar.addEventListener('change', () => {
   const fileAvatar = fileChooserAvatar.files[0];
   const fileNameAvatar =  fileAvatar.name.toLowerCase();
