@@ -4,6 +4,12 @@ import { sendData } from './server-api.js';
 import { resetMap } from './main.js';
 import {resetAvatar, resetPhotos} from './photos.js';
 
+const adForm = document.querySelector('.ad-form');
+const priceHousing = adForm.querySelector('#price');
+const typeHousing = adForm.querySelector('#type');
+const rooms = adForm.querySelector('#room_number');
+const capacity = adForm.querySelector('#capacity');
+
 const MIN_PRICE_OF_HOUSING = {
   bungalow: 0,
   flat: 1000,
@@ -11,14 +17,28 @@ const MIN_PRICE_OF_HOUSING = {
   palace: 10000,
 };
 
+const ValueGuests = {
+  MIN: 0,
+  MAX: 100,
+}
+
+const checkRoomsAndGuest = () => {
+  if (rooms.value >= ValueGuests.MAX && capacity.value > ValueGuests.MIN) {
+    capacity.setCustomValidity('100 Комнат может быть только не для гостей');
+  } else if (rooms.value < ValueGuests.MAX && capacity.value <= ValueGuests.MIN) {
+    capacity.setCustomValidity('Не для гостей может быть только 100 комнат');
+  } else if (rooms.value < capacity.value) {
+    capacity.setCustomValidity('Число гостей не может быть больше числа комнат');
+  } else {
+    capacity.setCustomValidity('');
+  }
+  capacity.reportValidity();
+};
+
+
 const setAddress = (x, y) => {
   address.value = `${x}, ${y}`;
 };
-
-const adForm = document.querySelector('.ad-form');
-
-const priceHousing = adForm.querySelector('#price');
-const typeHousing = adForm.querySelector('#type');
 
 const typeChange = () => {
   priceHousing.placeholder = MIN_PRICE_OF_HOUSING[typeHousing.value];
@@ -63,26 +83,6 @@ const activateForm = () => {
   });
 };
 
-const rooms = adForm.querySelector('#room_number');
-const capacity = adForm.querySelector('#capacity');
-
-const ValueGuests = {
-  MIN: 0,
-  MAX: 100,
-}
-
-const checkRoomsAndGuest = () => {
-  if (rooms.value >= ValueGuests.MAX && capacity.value > ValueGuests.MIN) {
-    capacity.setCustomValidity('100 Комнат может быть только не для гостей');
-  } else if (rooms.value < ValueGuests.MAX && capacity.value <= ValueGuests.MIN) {
-    capacity.setCustomValidity('Не для гостей может быть только 100 комнат');
-  } else if (rooms.value < capacity.value) {
-    capacity.setCustomValidity('Число гостей не может быть больше числа комнат');
-  } else {
-    capacity.setCustomValidity('');
-  }
-  capacity.reportValidity();
-};
 
 capacity.addEventListener('change', () => {
   checkRoomsAndGuest();

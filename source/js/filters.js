@@ -1,6 +1,5 @@
 import {resetFormButton} from './form.js'
 
-const DEFOLT_VALUE = 'any';
 
 const filterForm = document.querySelector('.map__filters');
 const selectsFilterForm = filterForm.querySelectorAll('select');
@@ -9,6 +8,14 @@ const filtersHousingType = filterForm.querySelector('#housing-type');
 const filtersHousingPrice = filterForm.querySelector('#housing-price');
 const filtersHousingRooms = filterForm.querySelector('#housing-rooms');
 const filtersHousingGuests = filterForm.querySelector('#housing-guests');
+
+const DEFOLT_VALUE = 'any';
+
+const PriceMoney = {
+  MAX: 50000,
+  MIN: 10000,
+};
+
 
 const inactivateFilter = () => {
   filterForm.classList.add('map__filters--disabled');
@@ -33,11 +40,6 @@ const priceEnumeration = {
   middle: 'middle',
   low: 'low',
   high: 'high',
-};
-
-const PriceMoney = {
-  MAX: 50000,
-  MIN: 10000,
 };
 
 
