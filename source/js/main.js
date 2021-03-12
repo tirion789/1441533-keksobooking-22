@@ -7,6 +7,7 @@ import './card.js';
 import './form.js';
 import './map.js';
 import './filters.js';
+import './server-api.js';
 import './popups.js';
 import './photos.js'
 import { createOffers } from './map.js';
