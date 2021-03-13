@@ -15,13 +15,13 @@ const discoverySuccessPopup = () => {
   main.appendChild(contentSuccess);
 };
 
-const closeErrorPopup = () => {
+const onErrorPopupClose = () => {
   if (main.contains(contentError)) {
     main.removeChild(contentError);
   }
 };
 
-const closeSuccessPopup = () => {
+const onSuccessPopupClose = () => {
   if (main.contains(contentSuccess)) {
     main.removeChild(contentSuccess);
   }
@@ -29,16 +29,16 @@ const closeSuccessPopup = () => {
 
 document.addEventListener('keydown', (evt) => {
   if (evt.key === 'Escape' || evt.key === 'Esc') {
-    closeErrorPopup();
-    closeSuccessPopup();
+    onErrorPopupClose();
+    onSuccessPopupClose();
   }
 });
 
 closeErrorButton.addEventListener('click', () => {
-  closeErrorPopup();
+  onErrorPopupClose();
 });
 
-main.addEventListener('click', closeErrorPopup);
-main.addEventListener('click', closeSuccessPopup);
+main.addEventListener('click', onErrorPopupClose);
+main.addEventListener('click', onSuccessPopupClose);
 
 export { discoveryErrorPopup, discoverySuccessPopup };
