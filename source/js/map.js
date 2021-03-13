@@ -1,6 +1,7 @@
 import { activateFilter, filtersGeneration } from './filters.js';
 import { activateForm, setAddress } from './form.js';
 import { generateCard } from './card.js';
+import L from 'leaflet';
 
 const HELP_COORDINATES = 12;
 
@@ -17,6 +18,7 @@ const Icon = {
 };
 
 setAddress(Coordinates.WIDTH, Coordinates.LONGITUDE);
+
 
 const map = L.map('map-canvas')
   .on('load', () => {

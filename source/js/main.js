@@ -6,6 +6,8 @@ import './filters.js';
 import './server-api.js';
 import './popups.js';
 import './photos.js'
+import 'leaflet/dist/leaflet.css';
+import * as _ from 'lodash';
 import { createOffers } from './map.js';
 import { getData } from './server-api.js';
 import { resetMapCoordinate, removeMarkers } from './map.js';
