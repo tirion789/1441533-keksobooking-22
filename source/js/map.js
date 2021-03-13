@@ -18,8 +18,6 @@ const Icon = {
 
 setAddress(Coordinates.WIDTH, Coordinates.LONGITUDE);
 
-/* global L:readonly */
-
 const map = L.map('map-canvas')
   .on('load', () => {
     activateFilter();

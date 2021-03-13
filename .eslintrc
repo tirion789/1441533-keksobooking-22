@@ -1,3 +1,4 @@
+
 root: true
 
 parserOptions:
@@ -10,3 +11,7 @@ env:
 
 extends:
   "htmlacademy/vanilla"
+
+globals:
+  "L": true
+  "_": true

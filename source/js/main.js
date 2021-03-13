@@ -1,5 +1,3 @@
-/* global _:readonly */
-
 import './util.js';
 import './card.js';
 import './form.js';
