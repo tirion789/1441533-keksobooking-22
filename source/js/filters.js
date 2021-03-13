@@ -1,11 +1,19 @@
 import {resetFormButton} from './form.js'
 
-const DEFOLT_VALUE = 'any';
+const DEFAULT_VALUE = 'any';
+
+const PRICE_ENUMERATION = {
+  any: 'any',
+  middle: 'middle',
+  low: 'low',
+  high: 'high',
+};
 
 const PriceMoney = {
   MAX: 50000,
   MIN: 10000,
 };
+
 
 const filterForm = document.querySelector('.map__filters');
 const selectsFilterForm = filterForm.querySelectorAll('select');
@@ -34,31 +42,24 @@ const activateFilter = () => {
   });
 };
 
-const priceEnumeration = {
-  any: 'any',
-  middle: 'middle',
-  low: 'low',
-  high: 'high',
-};
-
 
 const filtersReset = () => {
   filterForm.reset();
 };
 
 const filteringType = (type) => {
-  return filtersHousingType.value === DEFOLT_VALUE || filtersHousingType.value === type;
+  return filtersHousingType.value === DEFAULT_VALUE || filtersHousingType.value === type;
 };
 
 const filteringPrice = (price) => {
   switch (filtersHousingPrice.value) {
-    case priceEnumeration.any:
+    case PRICE_ENUMERATION.any:
       return price;
-    case priceEnumeration.middle:
+    case PRICE_ENUMERATION.middle:
       return PriceMoney.MAX >= price && PriceMoney.MIN <= price;
-    case priceEnumeration.low:
+    case PRICE_ENUMERATION.low:
       return PriceMoney.MIN >= price;
-    case priceEnumeration.high:
+    case PRICE_ENUMERATION.high:
       return price >= PriceMoney.MAX;
   }
 };
@@ -72,12 +73,12 @@ const filteringFeatures = (features) => {
 };
 
 const filteringRooms = (rooms) => {
-  return filtersHousingRooms.value === DEFOLT_VALUE || +filtersHousingRooms.value === rooms;
+  return filtersHousingRooms.value === DEFAULT_VALUE || +filtersHousingRooms.value === rooms;
 };
 
 const filteringGuests = (guests) => {
   return (
-    filtersHousingGuests.value === DEFOLT_VALUE || +filtersHousingGuests.value === guests
+    filtersHousingGuests.value === DEFAULT_VALUE || +filtersHousingGuests.value === guests
   );
 };
 
@@ -95,8 +96,8 @@ const setFiltersChange = (cb) => {
   filterForm.addEventListener('change', cb)
 }
 
-const setFiltersBottonReset = (cb) => {
+const setFiltersButtonReset = (cb) => {
   resetFormButton.addEventListener('click', cb);
 };
 
-export { activateFilter, filtersReset, filtersGeneration, setFiltersBottonReset, setFiltersChange };
+export { activateFilter, filtersReset, filtersGeneration, setFiltersButtonReset, setFiltersChange };

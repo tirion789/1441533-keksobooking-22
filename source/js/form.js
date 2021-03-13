@@ -41,15 +41,15 @@ const setAddress = (x, y) => {
   address.value = `${x}, ${y}`;
 };
 
-const typeChange = () => {
+const onSelectChangeType = () => {
   priceHousing.placeholder = MIN_PRICE_OF_HOUSING[typeHousing.value];
   priceHousing.min = MIN_PRICE_OF_HOUSING[typeHousing.value];
   priceHousing.required = true;
 };
 
-typeHousing.addEventListener('change', typeChange);
+typeHousing.addEventListener('change', onSelectChangeType);
 
-typeChange();
+onSelectChangeType();
 
 const timeIn = adForm.querySelector('#timein');
 const timeOut = adForm.querySelector('#timeout');

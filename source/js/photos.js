@@ -3,69 +3,50 @@ const DEFAULT_AVATAR = 'img/muffin-grey.svg'
 
 const fileChooserAvatar = document.querySelector('.ad-form-header__input');
 const previewAvatar = document.querySelector('.ad-form-header__preview img');
-
-fileChooserAvatar.addEventListener('change', () => {
-  const fileAvatar = fileChooserAvatar.files[0];
-  const fileNameAvatar =  fileAvatar.name.toLowerCase();
-
-  const matchesAvatar = FILE_TYPES.some((it) => {
-    return fileNameAvatar.endsWith(it);
-  });
-
-  if (matchesAvatar) {
-    const readerAvatar = new FileReader();
-
-    readerAvatar.addEventListener('load', () => {
-      previewAvatar.src = readerAvatar.result;
-    });
-
-    readerAvatar.readAsDataURL(fileAvatar);
-  }
-});
-
-const resetAvatar = () => {
-  previewAvatar.src = DEFAULT_AVATAR;
-};
-
-
 const fileChooserPhotos = document.querySelector('.ad-form__input');
 const previewPhotos = document.querySelector('.ad-form__photo');
 
 
-const showNewCastomImgPhotos = (downloadableСustomFiledPhotos, customPreviewFieldPhotos) => {
-  const filePhotos = downloadableСustomFiledPhotos.files[0];
-  const fileNamePhotos = filePhotos.name.toLowerCase();
+const onImageShowNewCustomPicture = (downloadableCustomFiledPhotos, customPreviewFieldPhotos) => {
+  const file = downloadableCustomFiledPhotos.files[0];
+  const fileName = file.name.toLowerCase();
 
-  const matchesPhoto = FILE_TYPES.some((it) => {
-    return fileNamePhotos.endsWith(it);
+  const matches = FILE_TYPES.some((it) => {
+    return fileName.endsWith(it);
   });
 
-  if (matchesPhoto) {
-    const readerPhoto = new FileReader();
+  if (matches) {
+    const reader = new FileReader();
 
-    readerPhoto.addEventListener('load', () => {
-      customPreviewFieldPhotos.src = readerPhoto.result;
+    reader.addEventListener('load', () => {
+      customPreviewFieldPhotos.src = reader.result;
     });
 
-    readerPhoto.readAsDataURL(filePhotos);
+    reader.readAsDataURL(file);
   }
 }
 
-const onCreateImagePreview = () => {
+const onImageCreatePreview = () => {
   const createImageElement = document.createElement('img');
   createImageElement.width = previewPhotos.offsetWidth;
   createImageElement.height = previewPhotos.offsetHeight;
   createImageElement.alt = 'Фото жилья';
   previewPhotos.append(createImageElement);
-  showNewCastomImgPhotos(fileChooserPhotos,  createImageElement)
+  onImageShowNewCustomPicture(fileChooserPhotos,  createImageElement)
 };
 
 
-fileChooserPhotos.addEventListener('change', onCreateImagePreview);
+fileChooserPhotos.addEventListener('change', onImageCreatePreview);
+
+fileChooserAvatar.addEventListener('change', () => onImageShowNewCustomPicture(fileChooserAvatar, previewAvatar))
 
 const resetPhotos = () => {
   previewPhotos.innerHTML = '';
 }
+
+const resetAvatar = () => {
+  previewAvatar.src = DEFAULT_AVATAR;
+};
 
 
 export {resetAvatar, resetPhotos}
