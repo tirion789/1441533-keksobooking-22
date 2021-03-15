@@ -11,12 +11,13 @@ import * as _ from 'lodash';
 import { createOffers } from './map.js';
 import { getData } from './server-api.js';
 import { resetMapCoordinate, removeMarkers } from './map.js';
-import { setFiltersButtonReset, setFiltersChange} from './filters.js'
+import { setFiltersButtonReset, setFiltersChange, activateFilter } from './filters.js'
 
 const RERENDER_DELAY = 500;
 
 getData((offers) => {
   createOffers(offers);
+  activateFilter();
   setFiltersChange(_.debounce( () => {removeMarkers(offers); createOffers(offers)}, RERENDER_DELAY));
   setFiltersButtonReset(() => createOffers(offers));
 });

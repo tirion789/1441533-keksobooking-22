@@ -1,4 +1,4 @@
-import { activateFilter, filtersGeneration } from './filters.js';
+import { filtersGeneration } from './filters.js';
 import { activateForm, setAddress } from './form.js';
 import { generateCard } from './card.js';
 import L from 'leaflet';
@@ -22,7 +22,6 @@ setAddress(Coordinates.WIDTH, Coordinates.LONGITUDE);
 
 const map = L.map('map-canvas')
   .on('load', () => {
-    activateFilter();
     activateForm();
     setAddress(Coordinates.WIDTH, Coordinates.LONGITUDE);
   })
