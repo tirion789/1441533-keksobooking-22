@@ -21,12 +21,4 @@ const showAlert = () => {
   }, ALERT_SHOW_TIME);
 };
 
-const getArbitraryInteger = (min, max) => {
-  if (min > max) {
-    throw new Error('Неверно указан числовой диапазон');
-  }
-  const rand = min - 0.5 + Math.random() * (max - min + 1);
-  return Math.round(rand);
-};
-
-export { getArbitraryInteger, showAlert };
+export { showAlert };

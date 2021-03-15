@@ -13,8 +13,8 @@ const Coordinates = {
 };
 
 const Icon = {
-  URL: [45, 45],
-  ANCHOR: [24, 45],
+  URLS: [45, 45],
+  ANCHORS: [24, 45],
 };
 
 setAddress(Coordinates.WIDTH, Coordinates.LONGITUDE);
@@ -41,8 +41,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 const mainPinMarker = L.icon({
   iconUrl: './img/main-pin.svg',
-  iconSize: Icon.URL,
-  iconAnchor: Icon.ANCHOR,
+  iconSize: Icon.URLS,
+  iconAnchor: Icon.ANCHORS,
 });
 
 const marker = L.marker(
@@ -64,8 +64,8 @@ marker.on('move', (evt) => {
 
 const offerPin = L.icon({
   iconUrl: './img/pin.svg',
-  iconSize: Icon.URL,
-  iconAnchor: Icon. ANCHOR,
+  iconSize: Icon.URLS,
+  iconAnchor: Icon. ANCHORS,
 });
 
 const resetMapCoordinate = () => {

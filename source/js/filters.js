@@ -23,7 +23,6 @@ const filtersHousingPrice = filterForm.querySelector('#housing-price');
 const filtersHousingRooms = filterForm.querySelector('#housing-rooms');
 const filtersHousingGuests = filterForm.querySelector('#housing-guests');
 
-
 const inactivateFilter = () => {
   filterForm.classList.add('map__filters--disabled');
   featuresFilterForm.disabled = true;
@@ -47,11 +46,11 @@ const filtersReset = () => {
   filterForm.reset();
 };
 
-const filteringType = (type) => {
+const filterType = (type) => {
   return filtersHousingType.value === DEFAULT_VALUE || filtersHousingType.value === type;
 };
 
-const filteringPrice = (price) => {
+const filterPrice = (price) => {
   switch (filtersHousingPrice.value) {
     case PRICE_ENUMERATION.any:
       return price;
@@ -64,7 +63,7 @@ const filteringPrice = (price) => {
   }
 };
 
-const filteringFeatures = (features) => {
+const filterFeatures = (features) => {
   const featuresList = featuresFilterForm.querySelectorAll('input:checked');
 
   return Array.from(featuresList).every((feature) => {
@@ -72,11 +71,11 @@ const filteringFeatures = (features) => {
   });
 };
 
-const filteringRooms = (rooms) => {
+const filterRooms = (rooms) => {
   return filtersHousingRooms.value === DEFAULT_VALUE || +filtersHousingRooms.value === rooms;
 };
 
-const filteringGuests = (guests) => {
+const filterGuests = (guests) => {
   return (
     filtersHousingGuests.value === DEFAULT_VALUE || +filtersHousingGuests.value === guests
   );
@@ -84,11 +83,11 @@ const filteringGuests = (guests) => {
 
 const filtersGeneration = ({offer}) => {
   return (
-    filteringType(offer.type) &&
-    filteringPrice(offer.price) &&
-    filteringRooms(offer.rooms) &&
-    filteringGuests(offer.guests) &&
-    filteringFeatures(offer.features)
+    filterType(offer.type) &&
+    filterPrice(offer.price) &&
+    filterRooms(offer.rooms) &&
+    filterGuests(offer.guests) &&
+    filterFeatures(offer.features)
   );
 };
 
